@@ -85,14 +85,25 @@ class EmployeesController extends Controller
 			
 			// Create Employee
 			$employee_id = Module::insert("Employees", $request);
-			// Create User
-			$user = User::create([
-				'name' => $request->name,
-				'email' => $request->email,
-				'password' => bcrypt($password),
-				'context_id' => $employee_id,
-				'type' => "Employee",
-			]);
+
+			if($user = User::where('email', $request->email)->first())
+			{
+				// Update User
+				$user->context_id = $employee_id;
+				$user->type = 'Employee';
+				$user->save();
+			}
+			else
+			{
+				// Create User
+				$user = User::create([
+					'name' => $request->name,
+					'email' => $request->email,
+					'password' => bcrypt($password),
+					'context_id' => $employee_id,
+					'type' => "Employee",
+				]);
+			}
 	
 			// update user role
 			$user->detachRoles();
@@ -207,13 +218,9 @@ class EmployeesController extends Controller
 			}
 			
 			$employee_id = Module::updateRow("Employees", $request, $id);
-        	
-			// Update User
-			$user = User::where('context_id', $employee_id)->first();
-			$user->name = $request->name;
-			$user->save();
-			
+
 			// update user role
+			$user = User::where('context_id', $employee_id)->first();
 			$user->detachRoles();
 			$role = Role::find($request->role);
 			$user->attachRole($role);
