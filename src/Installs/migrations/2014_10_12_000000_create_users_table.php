@@ -66,7 +66,7 @@ class CreateUsersTable extends Migration
                 "label" => "User Type",
                 "field_type" => "Dropdown",
                 "unique" => false,
-                "defaultvalue" => "Employee",
+                "defaultvalue" => "Client",
                 "minlength" => 0,
                 "maxlength" => 0,
                 "required" => false,

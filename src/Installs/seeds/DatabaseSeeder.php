@@ -73,9 +73,19 @@ class DatabaseSeeder extends Seeder
 		$role->dept = $dept->id;
 		$role->save();
 		
-		// Set Full Access For Super Admin Role
+		// Set Full Access For Super Admin Role # Except User Type
 		foreach ($modules as $module) {
 			Module::setDefaultRoleAccess($module->id, $role->id, "full");
+
+			if($module->name == "Users"){
+				$moduleFieldList = ModuleFields::where('module', $module->id)->get();
+
+				foreach($moduleFieldList as $field){
+					if($field->colname == "type"){
+						Module::setDefaultFieldRoleAccess($field->id, $role->id, "readonly");
+					}
+				}
+			}
 		}
 		
 		// Create Admin Panel Permission
