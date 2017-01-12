@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
 				$moduleFieldList = ModuleFields::where('module', $module->id)->get();
 
 				foreach($moduleFieldList as $field){
-					if($field->colname == "type"){
+					if($field->colname == "type" or $field->colname == "context_id"){
 						Module::setDefaultFieldRoleAccess($field->id, $role->id, "readonly");
 					}
 				}
