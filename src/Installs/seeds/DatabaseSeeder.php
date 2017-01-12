@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 		// Generating Module Menus
 		$modules = Module::all();
 		$teamMenu = Menu::create([
-			"name" => "团队",
+			"name" => "我的团队",
 			"module" => "",
 			"url" => "#",
 			"icon" => "fa-group",

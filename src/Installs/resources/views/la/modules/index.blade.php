@@ -5,7 +5,7 @@ use Dwij\Laraadmin\Models\Module;
 ?>
 
 @section("contentheader_title", trans('label.modules'))
-@section("contentheader_description", trans('label.modules').trans('label.listing'))
+@section("contentheader_description", trans('label.modules_listing'))
 @section("section", trans('label.modules'))
 @section("sub_section", trans('label.listing'))
 @section("htmlheader_title", trans('label.modules_listing'))
