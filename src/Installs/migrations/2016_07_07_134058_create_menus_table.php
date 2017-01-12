@@ -23,6 +23,7 @@ class CreateMenusTable extends Migration
         Schema::create('la_menus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50);
+			$table->string('module', 50);
             $table->string('url', 256);
             $table->string('icon', 50)->default("fa-cube");
             $table->string('type', 20)->default("module");

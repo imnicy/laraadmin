@@ -22,7 +22,7 @@
         @if(LAConfigs::getByKey('sidebar_search'))
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-	                <input type="text" name="q" class="form-control" placeholder="Search..."/>
+	                <input type="text" name="q" class="form-control" placeholder="{{ trans('label.search') }}..."/>
               <span class="input-group-btn">
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
@@ -33,19 +33,19 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">MODULES</li>
+            <li class="header">{{ trans('label.modules') }}</li>
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="{{ url(config('laraadmin.adminRoute')) }}"><i class='fa fa-home'></i> <span>Dashboard</span></a></li>
+            <li><a href="{{ url(config('laraadmin.adminRoute')) }}"><i class='fa fa-home'></i> <span>{{ trans('label.dashboard') }}</span></a></li>
             <?php
             $menuItems = Dwij\Laraadmin\Models\Menu::where("parent", 0)->orderBy('hierarchy', 'asc')->get();
             ?>
             @foreach ($menuItems as $menu)
                 @if($menu->type == "module")
                     <?php
-                    $temp_module_obj = Module::get($menu->name);
+                    $temp_module_obj = Module::get($menu->module);
                     ?>
                     @la_access($temp_module_obj->id)
-						@if(isset($module->id) && $module->name == $menu->name)
+						@if(isset($module->id) && $module->name == $menu->module)
                         	<?php echo LAHelper::print_menu($menu ,true); ?>
 						@else
 							<?php echo LAHelper::print_menu($menu); ?>

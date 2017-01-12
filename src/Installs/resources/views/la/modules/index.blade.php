@@ -4,15 +4,15 @@
 use Dwij\Laraadmin\Models\Module;
 ?>
 
-@section("contentheader_title", "Modules")
-@section("contentheader_description", "modules listing")
-@section("section", "Modules")
-@section("sub_section", "Listing")
-@section("htmlheader_title", "Modules Listing")
+@section("contentheader_title", trans('label.modules'))
+@section("contentheader_description", trans('label.modules').trans('label.listing'))
+@section("section", trans('label.modules'))
+@section("sub_section", trans('label.listing'))
+@section("htmlheader_title", trans('label.modules_listing'))
 
 @section("headerElems")
-<button class="btn btn-success btn-sm pull-right " data-toggle="modal" data-target="#AddExistModal">Module from Existing Table</button>
-<button class="btn btn-success btn-sm pull-right " style="margin-right:5px;" data-toggle="modal" data-target="#AddModal">Add Module</button>
+<button class="btn btn-success btn-sm pull-right " data-toggle="modal" data-target="#AddExistModal">{{ trans('label.module_from_existing_table') }}</button>
+<button class="btn btn-success btn-sm pull-right " style="margin-right:5px;" data-toggle="modal" data-target="#AddModal">{{ trans('label.add') }} {{ trans('label.module') }}</button>
 @endsection
 
 @section("main-content")
@@ -24,10 +24,10 @@ use Dwij\Laraadmin\Models\Module;
 		<thead>
 		<tr class="success">
 			<th>ID</th>
-			<th>Name</th>
-			<th>Table</th>
-			<th>Items</th>
-			<th>Actions</th>
+			<th>{{ trans('label.name') }}</th>
+			<th>{{ trans('label.table') }}</th>
+			<th>{{ trans('label.items') }}</th>
+			<th>{{ trans('label.actions') }}</th>
 		</tr>
 		</thead>
 		<tbody>	
@@ -56,7 +56,7 @@ use Dwij\Laraadmin\Models\Module;
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Add Module Of Exist Table</h4>
+				<h4 class="modal-title" id="myModalLabel">{{ trans('label.module_from_existing_table') }}</h4>
 			</div>
 			{!! Form::open(['route' => config('laraadmin.adminRoute') . '.modules.store', 'id' => 'module-add-form']) !!}
 			<div class="modal-body">
@@ -66,7 +66,7 @@ use Dwij\Laraadmin\Models\Module;
 						{{ Form::text("name", null, ['class'=>'form-control', 'placeholder'=>'Module Name', 'data-rule-minlength' => 2, 'data-rule-maxlength'=>20, 'required' => 'required']) }}
 					</div>-->				
 					<div class="form-group">
-						<label for="table">Table</label>
+						<label for="table">{{ trans('label.table') }}</label>
 						<?php
 						$default_val ='';
 						$table_module = array();
@@ -80,7 +80,7 @@ use Dwij\Laraadmin\Models\Module;
 						{{ Form::select("name", $table_module, $default_val, ['class'=>'form-control', 'rel' => '']) }}
 					</div>
 					<div class="form-group">
-						<label for="icon">Icon</label>
+						<label for="icon">{{ trans('label.icon') }}</label>
 						<div class="input-group">
 							<input class="form-control" placeholder="FontAwesome Icon" name="icon" type="text" value="fa-cube"  data-rule-minlength="1" required>
 							<span class="input-group-addon"></span>
@@ -89,8 +89,8 @@ use Dwij\Laraadmin\Models\Module;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				{!! Form::submit( 'Submit', ['class'=>'btn btn-success']) !!}
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('label.close') }}</button>
+				{!! Form::submit( trans('label.submit'), ['class'=>'btn btn-success']) !!}
 			</div>
 			{!! Form::close() !!}
 		</div>
@@ -102,17 +102,17 @@ use Dwij\Laraadmin\Models\Module;
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Add Module</h4>
+				<h4 class="modal-title" id="myModalLabel">{{ trans('label.add') }} {{ trans('label.module') }}</h4>
 			</div>
 			{!! Form::open(['route' => config('laraadmin.adminRoute') . '.modules.store', 'id' => 'module-add-form']) !!}
 			<div class="modal-body">
 				<div class="box-body">
 					<div class="form-group">
-						<label for="name">Module Name :</label>
+						<label for="name">{{ trans('label.module_name') }} :</label>
 						{{ Form::text("name", null, ['class'=>'form-control', 'placeholder'=>'Module Name', 'data-rule-minlength' => 2, 'data-rule-maxlength'=>20, 'required' => 'required']) }}
 					</div>
 					<div class="form-group">
-						<label for="icon">Icon</label>
+						<label for="icon">{{ trans('label.icon') }}</label>
 						<div class="input-group">
 							<input class="form-control" placeholder="FontAwesome Icon" name="icon" type="text" value="fa-cube"  data-rule-minlength="1" required>
 							<span class="input-group-addon"></span>
@@ -121,8 +121,8 @@ use Dwij\Laraadmin\Models\Module;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				{!! Form::submit( 'Submit', ['class'=>'btn btn-success']) !!}
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('label.close') }}</button>
+				{!! Form::submit( trans('label.submit'), ['class'=>'btn btn-success']) !!}
 			</div>
 			{!! Form::close() !!}
 		</div>
@@ -137,7 +137,7 @@ use Dwij\Laraadmin\Models\Module;
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
-				<h4 class="modal-title">Module Delete</h4>
+				<h4 class="modal-title">{{ trans('label.module') }} {{ trans('label.delete') }}</h4>
 			</div>
 			<div class="modal-body">
 				<p>Do you really want to delete module <b id="moduleNameStr" class="text-danger"></b> ?</p>
@@ -147,9 +147,9 @@ use Dwij\Laraadmin\Models\Module;
 			</div>
 			<div class="modal-footer">
 				{{ Form::open(['route' => [config('laraadmin.adminRoute') . '.modules.destroy', 0], 'id' => 'module_del_form', 'method' => 'delete', 'style'=>'display:inline']) }}
-					<button class="btn btn-danger btn-delete pull-left" type="submit">Yes</button>
+					<button class="btn btn-danger btn-delete pull-left" type="submit">{{ trans('label.yes') }}</button>
 				{{ Form::close() }}
-				<a data-dismiss="modal" class="btn btn-default pull-right" >No</a>				
+				<a data-dismiss="modal" class="btn btn-default pull-right" >{{ trans('label.no') }}</a>
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -163,18 +163,18 @@ use Dwij\Laraadmin\Models\Module;
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Update Module</h4>
+				<h4 class="modal-title" id="myModalLabel">{{ trans('label.update') }} {{ trans('label.module') }}</h4>
 			</div>
 			<form id="module-update-form" role="form" action="{{ url('module_edit_submit') }}" class="smart-form" novalidate="novalidate" method="post">
                 {{ csrf_field() }}
 				<div class="modal-body">
 					<div class="box-body">
 						<div class="form-group">
-							<label for="name">Module Name :</label>
+							<label for="name">{{ trans('label.module_name') }} :</label>
 							<input type="text"  class="form-control module_label_edit" placeholder="Module Name" name="Module Name" value=""/>
 						</div>
 						<div class="form-group">
-							<label for="icon">Icon</label>
+							<label for="icon">{{ trans('label.icon') }}</label>
 							<div class="input-group">
 								<input type="text" class="form-control module_icon_edit"  placeholder="FontAwesome Icon" name="icon"  value=""  data-rule-minlength="1" required>
 								<span class="input-group-addon update-icon"></span>
@@ -183,8 +183,8 @@ use Dwij\Laraadmin\Models\Module;
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-success save_edit_module" data-dismiss="modal">Save</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('label.close') }}</button>
+					<button type="button" class="btn btn-success save_edit_module" data-dismiss="modal">{{ trans('label.save') }}</button>
 				</div>
 			</form>
 		</div>
@@ -255,7 +255,21 @@ $(function () {
 	
 	$('input[name=icon]').iconpicker();
 	$("#dt_modules").DataTable({
-		
+        language: {
+            lengthMenu: "_MENU_",
+            search: "_INPUT_",
+            searchPlaceholder: "{{ trans('datatable.searchPlaceholder') }}",
+            emptyTable: "{{ trans('datatable.emptyTable') }}",
+            info: "{{ trans('datatable.info') }}",
+            infoEmpty: "{{ trans('datatable.infoEmpty') }}",
+            zeroRecords: "{{ trans('datatable.zeroRecords') }}",
+            paginate: {
+                first: "{{ trans('datatable.paginate.first') }}",
+                last: "{{ trans('datatable.paginate.last') }}",
+                next: "{{ trans('datatable.paginate.next') }}",
+                previous: "{{ trans('datatable.paginate.previous') }}"
+            }
+        }
 	});
 	$("#module-add-form").validate({
 		

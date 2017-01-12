@@ -4,11 +4,11 @@
 use Dwij\Laraadmin\Models\Module;
 ?>
 
-@section("contentheader_title", "Menus")
-@section("contentheader_description", "Editor")
-@section("section", "Menus")
-@section("sub_section", "Editor")
-@section("htmlheader_title", "Menu Editor")
+@section("contentheader_title", trans('label.menus'))
+@section("contentheader_description", trans('label.edit'))
+@section("section", trans('label.menus'))
+@section("sub_section", trans('label.edit'))
+@section("htmlheader_title", trans('label.menus_edit'))
 
 @section("headerElems")
 
@@ -23,8 +23,8 @@ use Dwij\Laraadmin\Models\Module;
 			<div class="col-md-4 col-lg-4">
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab-modules" data-toggle="tab">Modules</a></li>
-						<li><a href="#tab-custom-link" data-toggle="tab">Custom Links</a></li>
+						<li class="active"><a href="#tab-modules" data-toggle="tab">{{ trans('label.modules') }}</a></li>
+						<li><a href="#tab-custom-link" data-toggle="tab">{{ trans('label.custom_links') }}</a></li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab-modules">
@@ -77,7 +77,7 @@ use Dwij\Laraadmin\Models\Module;
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Edit Menu Item</h4>
+				<h4 class="modal-title" id="myModalLabel">{{ trans('label.edit') }} {{ trans('label.menus') }}</h4>
 			</div>
 			{!! Form::open(['action' => ['\Dwij\Laraadmin\Controllers\MenuController@update', 1], 'id' => 'menu-edit-form']) !!}
 			<input name="_method" type="hidden" value="PUT">
@@ -85,15 +85,15 @@ use Dwij\Laraadmin\Models\Module;
 				<div class="box-body">
                     <input type="hidden" name="type" value="custom">
 					<div class="form-group">
-						<label for="url" style="font-weight:normal;">URL</label>
+						<label for="url" style="font-weight:normal;">{{ trans('label.url') }}</label>
 						<input class="form-control" placeholder="URL" name="url" type="text" value="http://" data-rule-minlength="1" required>
 					</div>
 					<div class="form-group">
-						<label for="name" style="font-weight:normal;">Label</label>
+						<label for="name" style="font-weight:normal;">{{ trans('label.label') }}</label>
 						<input class="form-control" placeholder="Label" name="name" type="text" value=""  data-rule-minlength="1" required>
 					</div>
 					<div class="form-group">
-						<label for="icon" style="font-weight:normal;">Icon</label>
+						<label for="icon" style="font-weight:normal;">{{ trans('label.icon') }}</label>
 						<div class="input-group">
 							<input class="form-control" placeholder="FontAwesome Icon" name="icon" type="text" value="fa-cube"  data-rule-minlength="1" required>
 							<span class="input-group-addon"></span>
@@ -102,8 +102,8 @@ use Dwij\Laraadmin\Models\Module;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				{!! Form::submit( 'Submit', ['class'=>'btn btn-success']) !!}
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('label.close') }}</button>
+				{!! Form::submit( trans('label.submit'), ['class'=>'btn btn-success']) !!}
 			</div>
 			{!! Form::close() !!}
 		</div>

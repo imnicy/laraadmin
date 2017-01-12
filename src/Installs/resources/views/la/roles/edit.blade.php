@@ -1,14 +1,14 @@
 @extends("la.layouts.app")
 
 @section("contentheader_title")
-	<a href="{{ url(config('laraadmin.adminRoute') . '/roles') }}">Roles</a> :
+	<a href="{{ url(config('laraadmin.adminRoute') . '/roles') }}">{{ trans('label.role') }}</a> :
 @endsection
 @section("contentheader_description", $role->$view_col)
-@section("section", "Roles")
+@section("section", trans('label.roles'))
 @section("section_url", url(config('laraadmin.adminRoute') . '/roles'))
-@section("sub_section", "Edit")
+@section("sub_section", trans('label.edit'))
 
-@section("htmlheader_title", "Role Edit : ".$role->$view_col)
+@section("htmlheader_title", trans('label.role_edit')." : ".$role->$view_col)
 
 @section("main-content")
 
@@ -37,7 +37,7 @@
 					@la_input($module, 'dept')
 					<br>
 					<div class="form-group">
-						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/roles') }}" class="btn btn-default pull-right">Cancel</a>
+						{!! Form::submit( trans('label.update'), ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/roles') }}" class="btn btn-default pull-right">{{ trans('label.cancel') }}</a>
 					</div>
 				{!! Form::close() !!}
 			</div>

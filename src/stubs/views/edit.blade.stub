@@ -6,9 +6,9 @@
 @section("contentheader_description", $__singular_var__->$view_col)
 @section("section", "__module_name_2__")
 @section("section_url", url(config('laraadmin.adminRoute') . '/__db_table_name__'))
-@section("sub_section", "Edit")
+@section("sub_section", trans('label.edit'))
 
-@section("htmlheader_title", "__module_name_2__ Edit : ".$__singular_var__->$view_col)
+@section("htmlheader_title", "__module_name_2__ ".trans('label.edit')." : ".$__singular_var__->$view_col)
 
 @section("main-content")
 
@@ -37,7 +37,7 @@
                     --}}
                     <br>
                     <div class="form-group">
-                        {!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/__db_table_name__') }}" class="btn btn-default pull-right">Cancel</a>
+                        {!! Form::submit( trans('label.update'), ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/__db_table_name__') }}" class="btn btn-default pull-right">{{ trans('label.cancel') }}</a>
                     </div>
                 {!! Form::close() !!}
             </div>

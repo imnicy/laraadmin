@@ -20,10 +20,10 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Module::generate("Employees", 'employees', 'name', 'fa-group', [
+        Module::generate(trans('label.employees'), 'employees', 'name', 'fa-group', [
             [
                 "colname" => "name",
-                "label" => "Name",
+                "label" => "名称",
                 "field_type" => "Name",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "designation",
-                "label" => "Designation",
+                "label" => "指派",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -43,7 +43,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "gender",
-                "label" => "Gender",
+                "label" => "性别",
                 "field_type" => "Radio",
                 "unique" => false,
                 "defaultvalue" => "Male",
@@ -54,7 +54,7 @@ class CreateEmployeesTable extends Migration
                 "popup_vals" => ["Male","Female"],
             ], [
                 "colname" => "mobile",
-                "label" => "Mobile",
+                "label" => "电话",
                 "field_type" => "Mobile",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -64,7 +64,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "mobile2",
-                "label" => "Alternative Mobile",
+                "label" => "移动电话",
                 "field_type" => "Mobile",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -74,7 +74,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "email",
-                "label" => "Email",
+                "label" => "邮箱",
                 "field_type" => "Email",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -84,7 +84,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "dept",
-                "label" => "Department",
+                "label" => "部门",
                 "field_type" => "Dropdown",
                 "unique" => false,
                 "defaultvalue" => "0",
@@ -95,7 +95,7 @@ class CreateEmployeesTable extends Migration
                 "popup_vals" => "@departments",
             ], [
                 "colname" => "city",
-                "label" => "City",
+                "label" => "城市",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -105,7 +105,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "address",
-                "label" => "Address",
+                "label" => "地址",
                 "field_type" => "Address",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -115,7 +115,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "about",
-                "label" => "About",
+                "label" => "关于",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -125,7 +125,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "date_birth",
-                "label" => "Date of Birth",
+                "label" => "生日",
                 "field_type" => "Date",
                 "unique" => false,
                 "defaultvalue" => "NULL",
@@ -135,7 +135,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "date_hire",
-                "label" => "Hiring Date",
+                "label" => "雇佣时间",
                 "field_type" => "Date",
                 "unique" => false,
                 "defaultvalue" => "NULL",
@@ -145,7 +145,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "date_left",
-                "label" => "Resignation Date",
+                "label" => "解雇时间",
                 "field_type" => "Date",
                 "unique" => false,
                 "defaultvalue" => "NULL",
@@ -155,7 +155,7 @@ class CreateEmployeesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "salary_cur",
-                "label" => "Current Salary",
+                "label" => "当前薪资",
                 "field_type" => "Decimal",
                 "unique" => false,
                 "defaultvalue" => "0.0",

@@ -1,7 +1,7 @@
 @extends('la.layouts.app')
 
 @section('htmlheader_title')
-	Role View
+	{{ trans('label.role_view') }}
 @endsection
 
 

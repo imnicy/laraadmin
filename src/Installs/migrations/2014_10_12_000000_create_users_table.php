@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Module::generate("Users", 'users', 'name', 'fa-group', [
+        Module::generate(trans('label.users'), 'users', 'name', 'fa-group', [
             [
                 "colname" => "name",
-                "label" => "Name",
+                "label" => "名称",
                 "field_type" => "Name",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "context_id",
-                "label" => "Context",
+                "label" => "上下文",
                 "field_type" => "Integer",
                 "unique" => false,
                 "defaultvalue" => "0",
@@ -43,7 +43,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "email",
-                "label" => "Email",
+                "label" => "邮箱",
                 "field_type" => "Email",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -53,7 +53,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "password",
-                "label" => "Password",
+                "label" => "密码",
                 "field_type" => "Password",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -63,7 +63,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "type",
-                "label" => "User Type",
+                "label" => "用户类型",
                 "field_type" => "Dropdown",
                 "unique" => false,
                 "defaultvalue" => "Client",

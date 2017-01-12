@@ -1,12 +1,12 @@
 @extends("la.layouts.app")
 
-@section("contentheader_title", "Edit Field: ".$field->label)
-@section("contentheader_description", "from ".$module->model." module")
-@section("section", "Module ".$module->name)
+@section("contentheader_title", trans('label.edit_field').": ".$field->label)
+@section("contentheader_description", "from ".$module->model." ".trans('label.module'))
+@section("section", trans('label.module')." ".$module->name)
 @section("section_url", url(config('laraadmin.adminRoute') . '/modules/'.$module->id))
-@section("sub_section", "Edit Field")
+@section("sub_section", trans('label.edit_field'))
 
-@section("htmlheader_title", "Field Edit : ".$field->label)
+@section("htmlheader_title", trans('label.edit_field')." : ".$field->label)
 
 @section("main-content")
 <div class="box">
@@ -20,59 +20,59 @@
 					{{ Form::hidden("module_id", $module->id) }}
 					
 					<div class="form-group">
-						<label for="label">Field Label :</label>
+						<label for="label">{{ trans('label.field_label') }} :</label>
 						{{ Form::text("label", null, ['class'=>'form-control', 'placeholder'=>'Field Label', 'data-rule-minlength' => 2, 'data-rule-maxlength'=>20, 'required' => 'required']) }}
 					</div>
 					
 					<div class="form-group">
-						<label for="colname">Column Name :</label>
+						<label for="colname">{{ trans('label.column_name') }} :</label>
 						{{ Form::text("colname", null, ['class'=>'form-control', 'placeholder'=>'Column Name (lowercase)', 'data-rule-minlength' => 2, 'data-rule-maxlength'=>20, 'data-rule-banned-words' => 'true', 'required' => 'required']) }}
 					</div>
 					
 					<div class="form-group">
-						<label for="field_type">UI Type:</label>
+						<label for="field_type">{{ trans('label.ui_type') }} :</label>
 						{{ Form::select("field_type", $ftypes, null, ['class'=>'form-control', 'required' => 'required']) }}
 					</div>
 					
 					<div id="unique_val">
 						<div class="form-group">
-							<label for="unique">Unique:</label>
+							<label for="unique">{{ trans('label.unique') }} :</label>
 							{{ Form::checkbox("unique", "unique") }}
 							<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="defaultvalue">Default Value :</label>
+						<label for="defaultvalue">{{ trans('label.default_value') }} :</label>
 						{{ Form::text("defaultvalue", null, ['class'=>'form-control', 'placeholder'=>'Default Value']) }}
 					</div>
 					
 					<div id="length_div">
 						<div class="form-group">
-							<label for="minlength">Minimum :</label>
+							<label for="minlength">{{ trans('label.minimum') }} :</label>
 							{{ Form::number("minlength", null, ['class'=>'form-control', 'placeholder'=>'Default Value']) }}
 						</div>
 						
 						<div class="form-group">
-							<label for="maxlength">Maximum :</label>
+							<label for="maxlength">{{ trans('label.maximum') }} :</label>
 							{{ Form::number("maxlength", null, ['class'=>'form-control', 'placeholder'=>'Default Value']) }}
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="required">Required:</label>
+						<label for="required">{{ trans('label.required') }} :</label>
 						{{ Form::checkbox("required", "required") }}
 						<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 					</div>
 
 					<div class="form-group">
-						<label for="listing_col">Show in Index Listing:</label>
+						<label for="listing_col">{{ trans('label.show_in_index_listing') }} :</label>
 						{{ Form::checkbox("listing_col", "listing_col") }}
 						<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 					</div>
 					
 					<div class="form-group values">
-						<label for="popup_vals">Values :</label>
+						<label for="popup_vals">{{ trans('label.values') }} :</label>
 						<?php
 						$default_val = "";
 						$popup_value_type_table = false;
@@ -86,8 +86,8 @@
 						}
 						?>
 						<div class="radio" style="margin-bottom:20px;">
-							<label>{{ Form::radio("popup_value_type", "table", $popup_value_type_table) }} From Table</label>
-							<label>{{ Form::radio("popup_value_type", "list", $popup_value_type_list) }} From List</label>
+							<label>{{ Form::radio("popup_value_type", "table", $popup_value_type_table) }} {{ trans('label.from_table') }}</label>
+							<label>{{ Form::radio("popup_value_type", "list", $popup_value_type_list) }} {{ trans('label.from_list') }}</label>
 						</div>
 						{{ Form::select("popup_vals_table", $tables, $default_val, ['class'=>'form-control', 'rel' => '']) }}
 						
@@ -106,7 +106,7 @@
 					
                     <br>
 					<div class="form-group">
-						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/modules/'.$module->id) }}" class="btn btn-default pull-right">Cancel</a>
+						{!! Form::submit( trans('label.update'), ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/modules/'.$module->id) }}" class="btn btn-default pull-right">{{ trans('label.cancel') }}</a>
 					</div>
 				{!! Form::close() !!}
 				

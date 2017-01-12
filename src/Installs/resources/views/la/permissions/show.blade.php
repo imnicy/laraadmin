@@ -1,7 +1,7 @@
 @extends('la.layouts.app')
 
 @section('htmlheader_title')
-	Permission View
+	{{ trans('label.permission_view') }}
 @endsection
 
 

@@ -202,8 +202,9 @@ class LAInstall extends Command
                 
                 
                 // resources
-                $this->line('Generating resources: assets + views...');
+                $this->line('Generating resources: assets + lang + views...');
                 $this->copyFolder($from . "/resources/assets", $to . "/resources/assets");
+				$this->copyFolder($from . "/resources/lang", $to . "/resources/lang");
                 $this->copyFolder($from . "/resources/views", $to . "/resources/views");
                 
                 // Checking database

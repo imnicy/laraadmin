@@ -4,11 +4,11 @@
 	<a href="{{ url(config('laraadmin.adminRoute') . '/employees') }}">Employee</a> :
 @endsection
 @section("contentheader_description", $employee->$view_col)
-@section("section", "Employees")
+@section("section", trans('label.employees'))
 @section("section_url", url(config('laraadmin.adminRoute') . '/employees'))
-@section("sub_section", "Edit")
+@section("sub_section", trans('label.edit'))
 
-@section("htmlheader_title", "Employees Edit : ".$employee->$view_col)
+@section("htmlheader_title", trans('label.employees_edit')." : ".$employee->$view_col)
 
 @section("main-content")
 
@@ -65,7 +65,7 @@
 					</div>
                     <br>
 					<div class="form-group">
-						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/employees') }}" class="btn btn-default pull-right">Cancel</a>
+						{!! Form::submit( trans('label.update'), ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/employees') }}" class="btn btn-default pull-right">{{ trans('label.cancel') }}</a>
 					</div>
 				{!! Form::close() !!}
 			</div>

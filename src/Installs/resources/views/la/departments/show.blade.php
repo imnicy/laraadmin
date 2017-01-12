@@ -1,7 +1,7 @@
 @extends('la.layouts.app')
 
 @section('htmlheader_title')
-	Department View
+	{{ trans('label.department_view') }}
 @endsection
 
 

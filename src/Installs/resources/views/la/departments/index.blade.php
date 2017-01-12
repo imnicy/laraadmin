@@ -1,14 +1,14 @@
 @extends("la.layouts.app")
 
-@section("contentheader_title", "Departments")
-@section("contentheader_description", "Departments listing")
-@section("section", "Departments")
-@section("sub_section", "Listing")
-@section("htmlheader_title", "Departments Listing")
+@section("contentheader_title", trans('label.departments'))
+@section("contentheader_description", trans('label.departments_listing'))
+@section("section", trans('label.departments'))
+@section("sub_section", trans('label.listing'))
+@section("htmlheader_title", trans('label.departments_listing'))
 
 @section("headerElems")
 @la_access("Departments", "create")
-	<button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#AddModal">Add Department</button>
+	<button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#AddModal">{{ trans('label.department_add') }}</button>
 @endla_access
 @endsection
 
@@ -34,7 +34,7 @@
 			<th>{{ $module->fields[$col]['label'] or ucfirst($col) }}</th>
 			@endforeach
 			@if($show_actions)
-			<th>Actions</th>
+			<th>{{ trans('label.actions') }}</th>
 			@endif
 		</tr>
 		</thead>
@@ -51,7 +51,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Add Department</h4>
+				<h4 class="modal-title" id="myModalLabel">{{ trans('label.department_add') }}</h4>
 			</div>
 			{!! Form::open(['action' => 'LA\DepartmentsController@store', 'id' => 'department-add-form']) !!}
 			<div class="modal-body">
@@ -66,8 +66,8 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				{!! Form::submit( 'Submit', ['class'=>'btn btn-success']) !!}
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('label.close') }}</button>
+				{!! Form::submit( trans('label.submit'), ['class'=>'btn btn-success']) !!}
 			</div>
 			{!! Form::close() !!}
 		</div>
@@ -89,11 +89,21 @@ $(function () {
 		processing: true,
         serverSide: true,
         ajax: "{{ url(config('laraadmin.adminRoute') . '/department_dt_ajax') }}",
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
+        language: {
+            lengthMenu: "_MENU_",
+            search: "_INPUT_",
+            searchPlaceholder: "{{ trans('datatable.searchPlaceholder') }}",
+            emptyTable: "{{ trans('datatable.emptyTable') }}",
+            info: "{{ trans('datatable.info') }}",
+            infoEmpty: "{{ trans('datatable.infoEmpty') }}",
+            zeroRecords: "{{ trans('datatable.zeroRecords') }}",
+            paginate: {
+                first: "{{ trans('datatable.paginate.first') }}",
+                last: "{{ trans('datatable.paginate.last') }}",
+                next: "{{ trans('datatable.paginate.next') }}",
+                previous: "{{ trans('datatable.paginate.previous') }}"
+            }
+        },
 		@if($show_actions)
 		columnDefs: [ { orderable: false, targets: [-1] }],
 		@endif

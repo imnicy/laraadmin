@@ -20,10 +20,10 @@ class CreatePermissionsTable extends Migration
      */
     public function up()
     {
-        Module::generate("Permissions", 'permissions', 'name', 'fa-magic', [
+        Module::generate(trans('label.permissions'), 'permissions', 'name', 'fa-magic', [
             [
                 "colname" => "name",
-                "label" => "Name",
+                "label" => "名称",
                 "field_type" => "Name",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreatePermissionsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "display_name",
-                "label" => "Display Name",
+                "label" => "显示别名",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -43,7 +43,7 @@ class CreatePermissionsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "description",
-                "label" => "Description",
+                "label" => "描述",
                 "field_type" => "Textarea",
                 "unique" => false,
                 "defaultvalue" => "",

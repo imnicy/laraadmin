@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
 		// Generating Module Menus
 		$modules = Module::all();
 		$teamMenu = Menu::create([
-			"name" => "Team",
+			"name" => "团队",
+			"module" => "",
 			"url" => "#",
 			"icon" => "fa-group",
 			"type" => 'custom',
@@ -48,7 +49,8 @@ class DatabaseSeeder extends Seeder
 					$parent = $teamMenu->id;
 				}
 				Menu::create([
-					"name" => $module->name,
+					"name" => $module->label,
+					"module" => $module->name,
 					"url" => $module->name_db,
 					"icon" => $module->fa_icon,
 					"type" => 'module',
@@ -67,8 +69,8 @@ class DatabaseSeeder extends Seeder
 		// Create Super Admin Role
 		$role = new Role;
 		$role->name = "SUPER_ADMIN";
-		$role->display_name = "Super Admin";
-		$role->description = "Full Access Role";
+		$role->display_name = "超级管理员";
+		$role->description = "拥有全部权限";
 		$role->parent = 1;
 		$role->dept = $dept->id;
 		$role->save();
@@ -76,16 +78,6 @@ class DatabaseSeeder extends Seeder
 		// Set Full Access For Super Admin Role # Except User Type
 		foreach ($modules as $module) {
 			Module::setDefaultRoleAccess($module->id, $role->id, "full");
-
-			if($module->name == "Users"){
-				$moduleFieldList = ModuleFields::where('module', $module->id)->get();
-
-				foreach($moduleFieldList as $field){
-					if($field->colname == "type" or $field->colname == "context_id"){
-						Module::setDefaultFieldRoleAccess($field->id, $role->id, "readonly");
-					}
-				}
-			}
 		}
 		
 		// Create Admin Panel Permission

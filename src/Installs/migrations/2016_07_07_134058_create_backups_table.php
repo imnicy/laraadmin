@@ -20,10 +20,10 @@ class CreateBackupsTable extends Migration
      */
     public function up()
     {
-        Module::generate("Backups", 'backups', 'name', 'fa-hdd-o', [
+        Module::generate(trans('label.backups'), 'backups', 'name', 'fa-hdd-o', [
             [
                 "colname" => "name",
-                "label" => "Name",
+                "label" => "名称",
                 "field_type" => "Name",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateBackupsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "file_name",
-                "label" => "File Name",
+                "label" => "文件名称",
                 "field_type" => "String",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -43,7 +43,7 @@ class CreateBackupsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "backup_size",
-                "label" => "File Size",
+                "label" => "文件尺寸",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "0",

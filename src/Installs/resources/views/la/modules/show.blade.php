@@ -1,6 +1,6 @@
 @extends('la.layouts.app')
 
-@section('htmlheader_title', 'Module View')
+@section('htmlheader_title', trans('label.module_view'))
 
 <?php
 use Dwij\Laraadmin\Models\Module;
@@ -23,9 +23,9 @@ use Dwij\Laraadmin\Models\ModuleFields;
 				<div class="col-md-9">
 					<a class="text-white" href="{{ url(config('laraadmin.adminRoute') . '/'.$module->name_db) }}"><h4 data-toggle="tooltip" data-placement="left" title="Open {{ $module->model }} Module" class="name">{{ $module->label }}</h4></a>
 					<div class="row stats">
-						<div class="col-md-12">{{ Module::itemCount($module->name) }} Items</div>
+						<div class="col-md-12">{{ Module::itemCount($module->name) }} {{ trans('label.items') }}</div>
 					</div>
-					<p class="desc">@if(isset($module->is_gen) && $module->is_gen) <div class="label2 success">Module Generated</div> @else <div class="label2 danger" style="border:solid 1px #FFF;">Module not Generated</div> @endif</p>
+					<p class="desc">@if(isset($module->is_gen) && $module->is_gen) <div class="label2 success">{{ trans('label.module_generated') }}</div> @else <div class="label2 danger" style="border:solid 1px #FFF;">{{ trans('label.module_not_generated') }}</div> @endif</p>
 				</div>
 			</div>
 		</div>
@@ -44,12 +44,12 @@ use Dwij\Laraadmin\Models\ModuleFields;
 		<div class="col-md-4">
 			@if($module->view_col != "")
 				@if(isset($module->is_gen) && $module->is_gen)
-					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Update Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_update" href="#"><i class="fa fa-refresh"></i> Update Module</a></div>
-					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Update Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="update_migr" href="#"><i class="fa fa-database"></i> Update Migration</a></div>
+					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Update Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_update" href="#"><i class="fa fa-refresh"></i> {{ trans('label.update_module') }}</a></div>
+					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Update Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="update_migr" href="#"><i class="fa fa-database"></i> {{ trans('label.update_migration') }}</a></div>
 				@else
-					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Generate Migration + CRUD + Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr_crud" href="#"><i class="fa fa-cube"></i> Generate Migration + CRUD</a></div>
+					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Generate Migration + CRUD + Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr_crud" href="#"><i class="fa fa-cube"></i> {{ trans('label.generate_migration_CRUD') }}</a></div>
 					
- 					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Generate Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr" href="#"><i class="fa fa-database"></i> Generate Migration</a></div>
+ 					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Generate Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr" href="#"><i class="fa fa-database"></i> {{ trans('label.generate_migration') }}</a></div>
 				@endif
 			@else
 				<div class="dats1 text-center">To generate Migration or CRUD, set the view column using the <i class='fa fa-eye'></i> icon next to a column</div>
@@ -65,18 +65,18 @@ use Dwij\Laraadmin\Models\ModuleFields;
 		<li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/modules') }}" data-toggle="tooltip" data-placement="right" title="Back to Modules"> <i class="fa fa-chevron-left"></i>&nbsp;</a></li>
 		
 		<li class="tab-pane" id="fields">
-			<a id="tab_fields" role="tab" data-toggle="tab" class="tab_info" href="#fields" data-target="#tab-info"><i class="fa fa-bars"></i> Module Fields</a>
+			<a id="tab_fields" role="tab" data-toggle="tab" class="tab_info" href="#fields" data-target="#tab-info"><i class="fa fa-bars"></i> {{ trans('label.module_fields') }}</a>
 		</li>
 		
 		<li class="tab-pane" id="access">
-			<a id="tab_access" role="tab" data-toggle="tab"  class="tab_info " href="#access" data-target="#tab-access"><i class="fa fa-key"></i> Access</a>
+			<a id="tab_access" role="tab" data-toggle="tab"  class="tab_info " href="#access" data-target="#tab-access"><i class="fa fa-key"></i> {{ trans('label.access') }}</a>
 		</li>
 		
 		<li class="tab-pane" id="sort">
-			<a id="tab_sort" role="tab" data-toggle="tab"  class="tab_info " href="#sort" data-target="#tab-sort"><i class="fa fa-sort"></i> Sort</a>
+			<a id="tab_sort" role="tab" data-toggle="tab"  class="tab_info " href="#sort" data-target="#tab-sort"><i class="fa fa-sort"></i> {{ trans('label.sort') }}</a>
 		</li>
 		
-		<a data-toggle="modal" data-target="#AddFieldModal" class="btn btn-success btn-sm pull-right btn-add-field" style="margin-top:10px;margin-right:10px;">Add Field</a>
+		<a data-toggle="modal" data-target="#AddFieldModal" class="btn btn-success btn-sm pull-right btn-add-field" style="margin-top:10px;margin-right:10px;">{{ trans('label.add_field') }}</a>
 	</ul>
 
 	<div class="tab-content">
@@ -92,16 +92,16 @@ use Dwij\Laraadmin\Models\ModuleFields;
 						<tr class="success">
 							<th style="display:none;"></th>
 							<th>#</th>
-							<th>Label</th>
-							<th>Column</th>
-							<th>Type</th>
-							<th>Unique</th>
-							<th>Default</th>
-							<th>Min</th>
-							<th>Max</th>
-							<th>Required</th>
-							<th>Listing</th>
-							<th style="max-width:300px;">Values</th>
+							<th>{{ trans('label.field') }}</th>
+							<th>{{ trans('label.column') }}</th>
+							<th>{{ trans('label.type') }}</th>
+							<th>{{ trans('label.unique') }}</th>
+							<th>{{ trans('label.default_value') }}</th>
+							<th>{{ trans('label.minimum') }}</th>
+							<th>{{ trans('label.maximum') }}</th>
+							<th>{{ trans('label.required') }}</th>
+							<th>{{ trans('label.listing') }}</th>
+							<th style="max-width:300px;">{{ trans('label.values') }}</th>
 							<th style="min-width:60px;"><i class="fa fa-cogs"></i></th>
 						</tr>
 						</thead>
@@ -144,8 +144,8 @@ use Dwij\Laraadmin\Models\ModuleFields;
 		</div>
 		<div role="tabpanel" class="tab-pane fade in p20 bg-white" id="tab-access">
 			<div class="guide1">
-				<span class="pull-left">Module Access for Roles</span>
-				<i class="fa fa-circle gray"></i> Invisible <i class="fa fa-circle orange"></i> Read-Only <i class="fa fa-circle green"></i> Write
+				<span class="pull-left">{{ trans('label.module_access_for_roles') }}</span>
+				<i class="fa fa-circle gray"></i> {{ trans('label.invisible') }} <i class="fa fa-circle orange"></i> {{ trans('label.read_only') }} <i class="fa fa-circle green"></i> {{ trans('label.write') }}
 			</div>
 			<form action="{{ url(config('laraadmin.adminRoute') . '/save_role_module_permissions/'.$module->id) }}" method="post">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -153,21 +153,21 @@ use Dwij\Laraadmin\Models\ModuleFields;
 					<thead>
 						<tr class="blockHeader">
 							<th width="14%">
-								<input class="alignTop" type="checkbox" id="role_select_all" >&nbsp; Roles
+								<input class="alignTop" type="checkbox" id="role_select_all" >&nbsp; {{ trans('label.roles') }}
 							</th>
 							<th width="14%">
-								<input type="checkbox" id="view_all" >&nbsp; View
+								<input type="checkbox" id="view_all" >&nbsp; {{ trans('label.view') }}
 							</th>
 							<th width="14%">
-								<input type="checkbox" id="create_all" >&nbsp; Create
+								<input type="checkbox" id="create_all" >&nbsp; {{ trans('label.create') }}
 							</th>
 							<th width="14%">
-								<input type="checkbox" id="edit_all" >&nbsp; Edit
+								<input type="checkbox" id="edit_all" >&nbsp; {{ trans('label.edit') }}
 							</th>
 							<th width="14%">
-								<input class="alignTop" type="checkbox" id="delete_all" >&nbsp; Delete
+								<input class="alignTop" type="checkbox" id="delete_all" >&nbsp; {{ trans('label.delete') }}
 							</th>
-							<th width="14%">Field Privileges</th>
+							<th width="14%">{{ trans('label.field_privileges') }}</th>
 						</tr>
 					</thead>
 					@foreach($roles as $role)
@@ -229,7 +229,7 @@ use Dwij\Laraadmin\Models\ModuleFields;
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
-				<h4 class="modal-title">Module Delete</h4>
+				<h4 class="modal-title">{{ trans('label.module') }} {{ trans('label.delete') }}</h4>
 			</div>
 			<div class="modal-body">
 				<p>Do you really want to delete module <b id="moduleNameStr" class="text-danger"></b> ?</p>
@@ -239,9 +239,9 @@ use Dwij\Laraadmin\Models\ModuleFields;
 			</div>
 			<div class="modal-footer">
 				{{ Form::open(['route' => [config('laraadmin.adminRoute') . '.modules.destroy', 0], 'id' => 'module_del_form', 'method' => 'delete', 'style'=>'display:inline']) }}
-					<button class="btn btn-danger btn-delete pull-left" type="submit">Yes</button>
+					<button class="btn btn-danger btn-delete pull-left" type="submit">{{ trans('label.yes') }}</button>
 				{{ Form::close() }}
-				<a data-dismiss="modal" class="btn btn-default pull-right" >No</a>				
+				<a data-dismiss="modal" class="btn btn-default pull-right" >{{ trans('label.no') }}</a>
 			</div>
 		</div>
 		<!-- /.modal-content -->
@@ -254,19 +254,19 @@ use Dwij\Laraadmin\Models\ModuleFields;
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Add {{ $module->model }} Field</h4>
+				<h4 class="modal-title" id="myModalLabel">{{ trans('label.add') }} {{ $module->model }} {{ trans('label.field') }}</h4>
 			</div>
 			{!! Form::open(['route' => config('laraadmin.adminRoute') . '.module_fields.store', 'id' => 'field-form']) !!}
 			{{ Form::hidden("module_id", $module->id) }}
 			<div class="modal-body">
 				<div class="box-body">
 					<div class="form-group">
-						<label for="label">Field Label :</label>
+						<label for="label">{{ trans('label.field_label') }} :</label>
 						{{ Form::text("label", null, ['class'=>'form-control', 'placeholder'=>'Field Label', 'data-rule-minlength' => 2, 'data-rule-maxlength'=>20, 'required' => 'required']) }}
 					</div>
 					
 					<div class="form-group">
-						<label for="colname">Column Name :</label>
+						<label for="colname">{{ trans('label.column_name') }} :</label>
 						<?php
 						$columns = Schema::getColumnListing($module->name_db);
 						
@@ -293,13 +293,13 @@ use Dwij\Laraadmin\Models\ModuleFields;
 					</div>
 					
 					<div class="form-group">
-						<label for="field_type">UI Type:</label>
+						<label for="field_type">{{ trans('label.ui_type') }} :</label>
 						{{ Form::select("field_type", $ftypes, null, ['class'=>'form-control', 'required' => 'required']) }}
 					</div>
 					
 					<div id="unique_val">
 						<div class="form-group">
-							<label for="unique">Unique:</label>
+							<label for="unique">{{ trans('label.unique') }} :</label>
 							{{ Form::checkbox("unique", "unique", false, []) }}
 							<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 						</div>
@@ -307,31 +307,31 @@ use Dwij\Laraadmin\Models\ModuleFields;
 					
 					<div id="default_val">
 						<div class="form-group">
-							<label for="defaultvalue">Default Value :</label>
+							<label for="defaultvalue">{{ trans('label.default_value') }} :</label>
 							{{ Form::text("defaultvalue", null, ['class'=>'form-control', 'placeholder'=>'Default Value']) }}
 						</div>
 					</div>
 
 					<div id="length_div">
 						<div class="form-group">
-							<label for="minlength">Minimum :</label>
+							<label for="minlength">{{ trans('label.minimum') }} :</label>
 							{{ Form::number("minlength", null, ['class'=>'form-control', 'placeholder'=>'Minimum Value']) }}
 						</div>
 						
 						<div class="form-group">
-							<label for="maxlength">Maximum :</label>
+							<label for="maxlength">{{ trans('label.maximum') }} :</label>
 							{{ Form::number("maxlength", null, ['class'=>'form-control', 'placeholder'=>'Maximum Value']) }}
 						</div>
 					</div>
 					
 					<div class="form-group">
-						<label for="required">Required:</label>
+						<label for="required">{{ trans('label.required') }} :</label>
 						{{ Form::checkbox("required", "required", false, []) }}
 						<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 					</div>
 					
 					<div class="form-group">
-						<label for="listing_col">Show in Index Listing:</label>
+						<label for="listing_col">{{ trans('label.show_in_index_listing') }} :</label>
 						{{ Form::checkbox("listing_col", "listing_col", false, []) }}
 						<div class="Switch Round Off" style="vertical-align:top;margin-left:10px;"><div class="Toggle"></div></div>
 					</div>
@@ -345,8 +345,8 @@ use Dwij\Laraadmin\Models\ModuleFields;
 					<div class="form-group values">
 						<label for="popup_vals">Values :</label>
 						<div class="radio" style="margin-bottom:20px;">
-							<label>{{ Form::radio("popup_value_type", "table", true) }} From Table</label>
-							<label>{{ Form::radio("popup_value_type", "list", false) }} From List</label>
+							<label>{{ Form::radio("popup_value_type", "table", true) }} {{ trans('label.from_table') }}</label>
+							<label>{{ Form::radio("popup_value_type", "list", false) }} {{ trans('label.from_list') }}</label>
 						</div>
 						{{ Form::select("popup_vals_table", $tables, "", ['id'=>'popup_vals_table', 'class'=>'form-control', 'rel' => '']) }}
 						
@@ -362,8 +362,8 @@ use Dwij\Laraadmin\Models\ModuleFields;
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				{!! Form::submit( 'Submit', ['class'=>'btn btn-success']) !!}
+				<button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('label.close') }}</button>
+				{!! Form::submit( trans('label.submit'), ['class'=>'btn btn-success']) !!}
 			</div>
 			{!! Form::close() !!}
 		</div>
@@ -587,6 +587,21 @@ $(function () {
 		});
 	});
 	$("#dt_module_fields").DataTable({
+        language: {
+            lengthMenu: "_MENU_",
+            search: "_INPUT_",
+            searchPlaceholder: "{{ trans('datatable.searchPlaceholder') }}",
+            emptyTable: "{{ trans('datatable.emptyTable') }}",
+            info: "{{ trans('datatable.info') }}",
+            infoEmpty: "{{ trans('datatable.infoEmpty') }}",
+            zeroRecords: "{{ trans('datatable.zeroRecords') }}",
+            paginate: {
+                first: "{{ trans('datatable.paginate.first') }}",
+                last: "{{ trans('datatable.paginate.last') }}",
+                next: "{{ trans('datatable.paginate.next') }}",
+                previous: "{{ trans('datatable.paginate.previous') }}"
+            }
+        },
 		"initComplete": function(settings, json) {
 			console.log( 'DataTables has finished its initialisation.' );
 			console.log("Win: "+$(window).height()+" header: "+$(".main-header").height());

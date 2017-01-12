@@ -1,14 +1,14 @@
 @extends("la.layouts.app")
 
-@section("contentheader_title", "Backups")
-@section("contentheader_description", "Backups listing")
-@section("section", "Backups")
-@section("sub_section", "Listing")
-@section("htmlheader_title", "Backups Listing")
+@section("contentheader_title", trans('label.backups'))
+@section("contentheader_description", trans('label.backups_listing'))
+@section("section", trans('label.backups'))
+@section("sub_section", trans('label.listing'))
+@section("htmlheader_title", trans('lable.backups_listing'))
 
 @section("headerElems")
 @la_access("Backups", "create")
-	<button class="btn btn-success btn-sm pull-right" id="CreateBackup">Create Backup</button>
+	<button class="btn btn-success btn-sm pull-right" id="CreateBackup">{{ trans('label.backup_add') }}</button>
 @endla_access
 @endsection
 
@@ -34,7 +34,7 @@
 			<th>{{ $module->fields[$col]['label'] or ucfirst($col) }}</th>
 			@endforeach
 			@if($show_actions)
-			<th>Actions</th>
+			<th>{{ trans('label.actions') }}</th>
 			@endif
 		</tr>
 		</thead>
@@ -59,11 +59,21 @@ $(function () {
 		processing: true,
         serverSide: true,
         ajax: "{{ url(config('laraadmin.adminRoute') . '/backup_dt_ajax') }}",
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
+        language: {
+            lengthMenu: "_MENU_",
+            search: "_INPUT_",
+            searchPlaceholder: "{{ trans('datatable.searchPlaceholder') }}",
+            emptyTable: "{{ trans('datatable.emptyTable') }}",
+            info: "{{ trans('datatable.info') }}",
+            infoEmpty: "{{ trans('datatable.infoEmpty') }}",
+            zeroRecords: "{{ trans('datatable.zeroRecords') }}",
+            paginate: {
+                first: "{{ trans('datatable.paginate.first') }}",
+                last: "{{ trans('datatable.paginate.last') }}",
+                next: "{{ trans('datatable.paginate.next') }}",
+                previous: "{{ trans('datatable.paginate.previous') }}"
+            }
+        },
 		@if($show_actions)
 		columnDefs: [ { orderable: false, targets: [-1] }],
 		@endif
@@ -74,14 +84,14 @@ $(function () {
 			url: "{{ url(config('laraadmin.adminRoute') . '/create_backup_ajax') }}",
 			method: 'POST',
 			beforeSend: function() {
-				$("#CreateBackup").html('<i class="fa fa-refresh fa-spin"></i> Creating Backup...');
+				$("#CreateBackup").html('<i class="fa fa-refresh fa-spin"></i> {{ trans('label.creating_backup') }}...');
 			},
 			headers: {
 		    	'X-CSRF-Token': $('input[name="_token"]').val()
     		},
 			success: function( data ) {
 				if(data.status == "success") {
-					$("#CreateBackup").html('<i class="fa fa-check"></i> Backup Created');
+					$("#CreateBackup").html('<i class="fa fa-check"></i> {{ trans('label.backup_created') }}');
 					$('body').pgNotification({
 						style: 'circle',
 						title: 'Backup Creation',
@@ -95,10 +105,10 @@ $(function () {
 						window.location.reload();
 					}, 1000);
 				} else {
-					$("#CreateBackup").html('Create Backup');
+					$("#CreateBackup").html('{{ trans('label.create_backup') }}');
 					$('body').pgNotification({
 						style: 'circle',
-						title: 'Backup creation failed',
+						title: '{{ trans('label.backup_creation_failed') }}',
 						message: data.message,
 						position: "top-right",
 						timeout: 0,

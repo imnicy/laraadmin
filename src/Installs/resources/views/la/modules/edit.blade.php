@@ -3,7 +3,7 @@
 @section("contentheader_title", "Edit course: ")
 @section("contentheader_description", $course->$view_col)
 @section("section", "Courses")
-@section("sub_section", "Edit")
+@section("sub_section", trans('label.edit'))
 
 @section("htmlheader_title", "Course Edit : ".$course->$view_col)
 
@@ -19,7 +19,7 @@
 					
                     <br>
 					<div class="form-group">
-						{!! Form::submit( 'Update', ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/courses') }}" class="btn btn-default pull-right">Cancel</a>
+						{!! Form::submit( trans('label.update'), ['class'=>'btn btn-success']) !!} <a href="{{ url(config('laraadmin.adminRoute') . '/courses') }}" class="btn btn-default pull-right">{{ trans('label.cancel') }}</a>
 					</div>
 				{!! Form::close() !!}
 				

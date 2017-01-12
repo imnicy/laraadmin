@@ -1,10 +1,10 @@
 @extends("la.layouts.app")
 
-@section("contentheader_title", "Users")
-@section("contentheader_description", "Users listing")
-@section("section", "Users")
-@section("sub_section", "Listing")
-@section("htmlheader_title", "Users Listing")
+@section("contentheader_title", trans('label.users'))
+@section("contentheader_description", trans('label.users_listing'))
+@section("section", trans('label.users'))
+@section("sub_section", trans('label.listing'))
+@section("htmlheader_title", trans('label.users_listing'))
 
 @section("headerElems")
 
@@ -23,24 +23,24 @@
 @endif
 
 <div class="box box-success">
-	<!--<div class="box-header"></div>-->
-	<div class="box-body">
-		<table id="example1" class="table table-bordered">
-		<thead>
-		<tr class="success">
-			@foreach( $listing_cols as $col )
-			<th>{{ $module->fields[$col]['label'] or ucfirst($col) }}</th>
-			@endforeach
-			@if($show_actions)
-			<th>Actions</th>
-			@endif
-		</tr>
-		</thead>
-		<tbody>
-			
-		</tbody>
-		</table>
-	</div>
+    <!--<div class="box-header"></div>-->
+    <div class="box-body">
+        <table id="example1" class="table table-bordered">
+        <thead>
+        <tr class="success">
+            @foreach( $listing_cols as $col )
+            <th>{{ $module->fields[$col]['label'] or ucfirst($col) }}</th>
+            @endforeach
+            @if($show_actions)
+            <th>{{ trans('label.actions') }}</th>
+            @endif
+        </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+        </table>
+    </div>
 </div>
 
 @endsection
@@ -53,22 +53,32 @@
 <script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
 <script>
 $(function () {
-	$("#example1").DataTable({
-		processing: true,
+    $("#example1").DataTable({
+        processing: true,
         serverSide: true,
         ajax: "{{ url(config('laraadmin.adminRoute') . '/user_dt_ajax') }}",
-		language: {
-			lengthMenu: "_MENU_",
-			search: "_INPUT_",
-			searchPlaceholder: "Search"
-		},
-		@if($show_actions)
-		columnDefs: [ { orderable: false, targets: [-1] }],
-		@endif
-	});
-	$("#user-add-form").validate({
-		
-	});
+        language: {
+            lengthMenu: "_MENU_",
+            search: "_INPUT_",
+            searchPlaceholder: "{{ trans('datatable.searchPlaceholder') }}",
+            emptyTable: "{{ trans('datatable.emptyTable') }}",
+            info: "{{ trans('datatable.info') }}",
+            infoEmpty: "{{ trans('datatable.infoEmpty') }}",
+            zeroRecords: "{{ trans('datatable.zeroRecords') }}",
+            paginate: {
+                first: "{{ trans('datatable.paginate.first') }}",
+                last: "{{ trans('datatable.paginate.last') }}",
+                next: "{{ trans('datatable.paginate.next') }}",
+                previous: "{{ trans('datatable.paginate.previous') }}"
+            }
+        },
+        @if($show_actions)
+        columnDefs: [ { orderable: false, targets: [-1] }],
+        @endif
+    });
+    $("#user-add-form").validate({
+        
+    });
 });
 </script>
 @endpush

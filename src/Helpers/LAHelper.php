@@ -38,7 +38,6 @@ class LAHelper
         $module_name = str_replace(" ", "_", $module_name);
         
         $array['module'] = ucfirst(str_plural($module_name));
-        $array['label'] = ucfirst(str_plural($module_name));
         $array['table'] = strtolower(str_plural($module_name));
         $array['model'] = ucfirst(str_singular($module_name));
         $array['fa_icon'] = $icon;
