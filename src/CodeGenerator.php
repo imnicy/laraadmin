@@ -57,6 +57,7 @@ class CodeGenerator
         $md = str_replace("__route_resource__", $config->dbTableName, $md);
         $md = str_replace("__db_table_name__", $config->dbTableName, $md);
         $md = str_replace("__singular_var__", $config->singularVar, $md);
+		$md = str_replace("__singular_vars__", $config->singularVars, $md);
         
         file_put_contents(base_path('app/Http/Controllers/LA/' . $config->controllerName . ".php"), $md);
     }
@@ -103,6 +104,7 @@ class CodeGenerator
         $md = str_replace("__db_table_name__", $config->dbTableName, $md);
         $md = str_replace("__controller_class_name__", $config->controllerName, $md);
         $md = str_replace("__singular_var__", $config->singularVar, $md);
+		$md = str_replace("__singular_vars__", $config->singularVars, $md);
         $md = str_replace("__singular_cap_var__", $config->singularCapitalVar, $md);
         $md = str_replace("__module_name_2__", $config->moduleName2, $md);
         
@@ -184,6 +186,7 @@ class CodeGenerator
         $md = str_replace("__controller_class_name__", $config->controllerName, $md);
         $md = str_replace("__db_table_name__", $config->dbTableName, $md);
         $md = str_replace("__singular_var__", $config->singularVar, $md);
+		$md = str_replace("__singular_vars__", $config->singularVars, $md);
         $md = str_replace("__singular_cap_var__", $config->singularCapitalVar, $md);
         
         file_put_contents($routesFile, $md, FILE_APPEND);
@@ -406,6 +409,7 @@ class CodeGenerator
         $config->moduleName2 = str_replace('_', ' ', ucfirst(str_plural($module)));
         $config->controllerName = ucfirst(str_plural($module)) . "Controller";
         $config->singularVar = strtolower(str_singular($module));
+		$config->singularVars = strtolower(str_plural($module));
         $config->singularCapitalVar = str_replace('_', ' ', ucfirst(str_singular($module)));
         
         $module = Module::get($config->moduleName);

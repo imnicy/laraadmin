@@ -44,12 +44,12 @@ use Dwij\Laraadmin\Models\ModuleFields;
 		<div class="col-md-4">
 			@if($module->view_col != "")
 				@if(isset($module->is_gen) && $module->is_gen)
-					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Update Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_update" href="#"><i class="fa fa-refresh"></i> {{ trans('label.update_module') }}</a></div>
-					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Update Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="update_migr" href="#"><i class="fa fa-database"></i> {{ trans('label.update_migration') }}</a></div>
+					<div class="dats1"><a data-toggle="tooltip" data-placement="left" title="Update Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_update" href="#"><i class="fa fa-refresh"></i> {{ trans('label.module_update') }}</a></div>
+					<div class="dats1"><a data-toggle="tooltip" data-placement="left" title="Update Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="update_migr" href="#"><i class="fa fa-database"></i> {{ trans('label.update_migration') }}</a></div>
 				@else
-					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Generate Migration + CRUD + Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr_crud" href="#"><i class="fa fa-cube"></i> {{ trans('label.generate_migration_CRUD') }}</a></div>
+					<div class="dats1"><a data-toggle="tooltip" data-placement="left" title="Generate Migration + CRUD + Module" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr_crud" href="#"><i class="fa fa-cube"></i> {{ trans('label.generate_migration_CRUD') }}</a></div>
 					
- 					<div class="dats1 text-center"><a data-toggle="tooltip" data-placement="left" title="Generate Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr" href="#"><i class="fa fa-database"></i> {{ trans('label.generate_migration') }}</a></div>
+ 					<div class="dats1"><a data-toggle="tooltip" data-placement="left" title="Generate Migration File" class="btn btn-sm btn-success" style="border-color:#FFF;" id="generate_migr" href="#"><i class="fa fa-database"></i> {{ trans('label.generate_migration') }}</a></div>
 				@endif
 			@else
 				<div class="dats1 text-center">To generate Migration or CRUD, set the view column using the <i class='fa fa-eye'></i> icon next to a column</div>
@@ -229,13 +229,13 @@ use Dwij\Laraadmin\Models\ModuleFields;
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">×</span>
 				</button>
-				<h4 class="modal-title">{{ trans('label.module') }} {{ trans('label.delete') }}</h4>
+				<h4 class="modal-title">{{ trans('label.module_delete') }}</h4>
 			</div>
 			<div class="modal-body">
-				<p>Do you really want to delete module <b id="moduleNameStr" class="text-danger"></b> ?</p>
-				<p>Following files will be deleted:</p>
+				<p>{{ trans('label.do_you_really_want_to_delete_module') }} <b id="moduleNameStr" class="text-danger"></b> ?</p>
+				<p>{{ trans('label.following_files_will_be_deleted') }}:</p>
 				<div id="moduleDeleteFiles"></div>
-				<p class="text-danger">Note: Migration file will not be deleted but modified.</p>
+				<p class="text-danger">Note: {{ trans('label.migration_file_will_not_be_deleted_but_modified') }}.</p>
 			</div>
 			<div class="modal-footer">
 				{{ Form::open(['route' => [config('laraadmin.adminRoute') . '.modules.destroy', 0], 'id' => 'module_del_form', 'method' => 'delete', 'style'=>'display:inline']) }}
@@ -409,7 +409,6 @@ use Dwij\Laraadmin\Models\ModuleFields;
 @push('scripts')
 <script src="{{ asset('la-assets/plugins/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('la-assets/plugins/bootstrap-slider/bootstrap-slider.js') }}"></script>
-<script src="{{ asset('la-assets/plugins/jQueryUI/jquery-ui.js') }}"></script>
 
 <script>
 

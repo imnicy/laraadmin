@@ -35,7 +35,6 @@ class DatabaseSeeder extends Seeder
 		$modules = Module::all();
 		$teamMenu = Menu::create([
 			"name" => "Team",
-			"module" => "",
 			"url" => "#",
 			"icon" => "fa-group",
 			"type" => 'custom',
@@ -49,8 +48,7 @@ class DatabaseSeeder extends Seeder
 					$parent = $teamMenu->id;
 				}
 				Menu::create([
-					"name" => $module->label,
-					"module" => $module->name,
+					"name" => $module->name,
 					"url" => $module->name_db,
 					"icon" => $module->fa_icon,
 					"type" => 'module',

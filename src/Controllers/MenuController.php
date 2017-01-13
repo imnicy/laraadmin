@@ -60,8 +60,6 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-		$module_name = "";
-
         $name = Input::get('name');
         $url = Input::get('url');
         $icon = Input::get('icon');
@@ -72,7 +70,6 @@ class MenuController extends Controller
             $module = Module::find($module_id);
             if(isset($module->id)) {
                 $name = $module->label;
-				$module_name = $module->name;
                 $url = $module->name_db;
                 $icon = $module->fa_icon;
             } else {
@@ -84,7 +81,6 @@ class MenuController extends Controller
         }
         Menu::create([
             "name" => $name,
-			"module" => $module_name,
             "url" => $url,
             "icon" => $icon,
             "type" => $type,

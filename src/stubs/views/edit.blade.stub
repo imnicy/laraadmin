@@ -4,11 +4,11 @@
     <a href="{{ url(config('laraadmin.adminRoute') . '/__db_table_name__') }}">__singular_cap_var__</a> :
 @endsection
 @section("contentheader_description", $__singular_var__->$view_col)
-@section("section", "__module_name_2__")
+@section("section", trans('label.__singular_var__'))
 @section("section_url", url(config('laraadmin.adminRoute') . '/__db_table_name__'))
 @section("sub_section", trans('label.edit'))
 
-@section("htmlheader_title", "__module_name_2__ ".trans('label.edit')." : ".$__singular_var__->$view_col)
+@section("htmlheader_title", trans('label.__singular_var___edit')." : ".$__singular_var__->$view_col)
 
 @section("main-content")
 

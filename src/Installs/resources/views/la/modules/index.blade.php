@@ -12,7 +12,7 @@ use Dwij\Laraadmin\Models\Module;
 
 @section("headerElems")
 <button class="btn btn-success btn-sm pull-right " data-toggle="modal" data-target="#AddExistModal">{{ trans('label.module_from_existing_table') }}</button>
-<button class="btn btn-success btn-sm pull-right " style="margin-right:5px;" data-toggle="modal" data-target="#AddModal">{{ trans('label.add') }} {{ trans('label.module') }}</button>
+<button class="btn btn-success btn-sm pull-right " style="margin-right:5px;" data-toggle="modal" data-target="#AddModal">{{ trans('label.module_add') }}</button>
 @endsection
 
 @section("main-content")

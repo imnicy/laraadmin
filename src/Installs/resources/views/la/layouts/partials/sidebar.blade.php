@@ -42,10 +42,10 @@
             @foreach ($menuItems as $menu)
                 @if($menu->type == "module")
                     <?php
-                    $temp_module_obj = Module::get($menu->module);
+                    $temp_module_obj = Module::get($menu->name);
                     ?>
                     @la_access($temp_module_obj->id)
-						@if(isset($module->id) && $module->name == $menu->module)
+						@if(isset($module->id) && $module->name == $menu->name)
                         	<?php echo LAHelper::print_menu($menu ,true); ?>
 						@else
 							<?php echo LAHelper::print_menu($menu); ?>

@@ -1,14 +1,14 @@
 @extends("la.layouts.app")
 
-@section("contentheader_title", "__module_name_2__")
-@section("contentheader_description", "__module_name_2__ ".trans('label.listing'))
-@section("section", "__module_name_2__")
+@section("contentheader_title", trans('label.__singular_vars__'))
+@section("contentheader_description", trans('label.__singular_vars___listing'))
+@section("section", trans('label.__singular_vars__'))
 @section("sub_section", trans('label.listing'))
-@section("htmlheader_title", "__module_name_2__ ".trans('label.listing'))
+@section("htmlheader_title", trans('label.__singular_vars___listing'))
 
 @section("headerElems")
 @la_access("__module_name__", "create")
-    <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#AddModal">{{ trans('label.add') }} __singular_cap_var__</button>
+    <button class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#AddModal">{{ trans('label.__singular_var___add') }}</button>
 @endla_access
 @endsection
 
@@ -51,7 +51,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{ trans('label.add') }} __singular_cap_var__</h4>
+                <h4 class="modal-title" id="myModalLabel">{{ trans('label.__singular_var___add') }}</h4>
             </div>
             {!! Form::open(['action' => 'LA\__controller_class_name__@store', 'id' => '__singular_var__-add-form']) !!}
             <div class="modal-body">
