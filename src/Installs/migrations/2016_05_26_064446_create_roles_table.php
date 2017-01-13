@@ -20,10 +20,10 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Module::generate(trans('label.roles'), 'roles', 'name', 'fa-user-plus', [
+        Module::generate("Roles", 'roles', 'name', 'fa-user-plus', [
             [
                 "colname" => "name",
-                "label" => "名称",
+                "label" => "Name",
                 "field_type" => "Name",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateRolesTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "display_name",
-                "label" => "显示别名",
+                "label" => "Display Name",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -43,7 +43,7 @@ class CreateRolesTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "description",
-                "label" => "描述",
+                "label" => "Description",
                 "field_type" => "Textarea",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -53,7 +53,7 @@ class CreateRolesTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "parent",
-                "label" => "父角色",
+                "label" => "Parent Role",
                 "field_type" => "Dropdown",
                 "unique" => false,
                 "defaultvalue" => "1",
@@ -64,7 +64,7 @@ class CreateRolesTable extends Migration
                 "popup_vals" => "@roles",
             ], [
                 "colname" => "dept",
-                "label" => "部门",
+                "label" => "Department",
                 "field_type" => "Dropdown",
                 "unique" => false,
                 "defaultvalue" => "1",

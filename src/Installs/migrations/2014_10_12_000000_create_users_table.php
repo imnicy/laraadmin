@@ -20,10 +20,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Module::generate(trans('label.users'), 'users', 'name', 'fa-group', [
+        Module::generate("Users", 'users', 'name', 'fa-group', [
             [
                 "colname" => "name",
-                "label" => "名称",
+                "label" => "Name",
                 "field_type" => "Name",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "context_id",
-                "label" => "上下文",
+                "label" => "Context",
                 "field_type" => "Integer",
                 "unique" => false,
                 "defaultvalue" => "0",
@@ -43,7 +43,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "email",
-                "label" => "邮箱",
+                "label" => "Email",
                 "field_type" => "Email",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -53,7 +53,7 @@ class CreateUsersTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "password",
-                "label" => "密码",
+                "label" => "Password",
                 "field_type" => "Password",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -63,10 +63,10 @@ class CreateUsersTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "type",
-                "label" => "用户类型",
+                "label" => "User Type",
                 "field_type" => "Dropdown",
                 "unique" => false,
-                "defaultvalue" => "Client",
+                "defaultvalue" => "Employee",
                 "minlength" => 0,
                 "maxlength" => 0,
                 "required" => false,

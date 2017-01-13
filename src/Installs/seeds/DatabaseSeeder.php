@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
 		// Generating Module Menus
 		$modules = Module::all();
 		$teamMenu = Menu::create([
-			"name" => "我的团队",
+			"name" => "Team",
 			"module" => "",
 			"url" => "#",
 			"icon" => "fa-group",
@@ -69,8 +69,8 @@ class DatabaseSeeder extends Seeder
 		// Create Super Admin Role
 		$role = new Role;
 		$role->name = "SUPER_ADMIN";
-		$role->display_name = "超级管理员";
-		$role->description = "拥有全部权限";
+		$role->display_name = "Super Admin";
+		$role->description = "Have all rights";
 		$role->parent = 1;
 		$role->dept = $dept->id;
 		$role->save();

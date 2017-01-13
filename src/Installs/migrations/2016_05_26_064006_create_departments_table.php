@@ -20,10 +20,10 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Module::generate(trans('label.departments'), 'departments', 'name', 'fa-tags', [
+        Module::generate("Departments", 'departments', 'name', 'fa-tags', [
             [
                 "colname" => "name",
-                "label" => "名称",
+                "label" => "Name",
                 "field_type" => "Name",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateDepartmentsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "tags",
-                "label" => "标签",
+                "label" => "Tags",
                 "field_type" => "Taginput",
                 "unique" => false,
                 "defaultvalue" => [],
@@ -43,7 +43,7 @@ class CreateDepartmentsTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "color",
-                "label" => "颜色",
+                "label" => "Color",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",

@@ -20,10 +20,10 @@ class CreateUploadsTable extends Migration
      */
     public function up()
     {
-        Module::generate(trans('label.uploads'), 'uploads', 'name', 'fa-files-o', [
+        Module::generate("Uploads", 'uploads', 'name', 'fa-files-o', [
             [
                 "colname" => "name",
-                "label" => "名称",
+                "label" => "Name",
                 "field_type" => "Name",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateUploadsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "path",
-                "label" => "路径",
+                "label" => "Path",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -43,7 +43,7 @@ class CreateUploadsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "extension",
-                "label" => "后缀",
+                "label" => "Extension",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -53,7 +53,7 @@ class CreateUploadsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "caption",
-                "label" => "字幕",
+                "label" => "Caption",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -63,7 +63,7 @@ class CreateUploadsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "user_id",
-                "label" => "拥有者",
+                "label" => "Owner",
                 "field_type" => "Dropdown",
                 "unique" => false,
                 "defaultvalue" => "1",
@@ -84,7 +84,7 @@ class CreateUploadsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "public",
-                "label" => "是否公开",
+                "label" => "Is Public",
                 "field_type" => "Checkbox",
                 "unique" => false,
                 "defaultvalue" => "0",

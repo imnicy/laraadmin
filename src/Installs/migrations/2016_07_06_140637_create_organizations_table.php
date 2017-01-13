@@ -20,10 +20,10 @@ class CreateOrganizationsTable extends Migration
      */
     public function up()
     {
-        Module::generate(trans('label.organizations'), 'organizations', 'name', 'fa-university', [
+        Module::generate("Organizations", 'organizations', 'name', 'fa-university', [
             [
                 "colname" => "name",
-                "label" => "名称",
+                "label" => "Name",
                 "field_type" => "Name",
                 "unique" => true,
                 "defaultvalue" => "",
@@ -33,7 +33,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "email",
-                "label" => "邮箱",
+                "label" => "Email",
                 "field_type" => "Email",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -43,7 +43,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "phone",
-                "label" => "电话",
+                "label" => "Phone",
                 "field_type" => "Mobile",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -53,7 +53,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "website",
-                "label" => "站点",
+                "label" => "Website",
                 "field_type" => "URL",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -63,7 +63,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "assigned_to",
-                "label" => "分配给",
+                "label" => "Assigned to",
                 "field_type" => "Dropdown",
                 "unique" => false,
                 "defaultvalue" => "0",
@@ -74,7 +74,7 @@ class CreateOrganizationsTable extends Migration
                 "popup_vals" => "@employees",
             ], [
                 "colname" => "connected_since",
-                "label" => "链接自",
+                "label" => "Connected Since",
                 "field_type" => "Date",
                 "unique" => false,
                 "defaultvalue" => "NULL",
@@ -84,7 +84,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "address",
-                "label" => "地址",
+                "label" => "Address",
                 "field_type" => "Address",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -94,7 +94,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "city",
-                "label" => "城市",
+                "label" => "City",
                 "field_type" => "String",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -104,7 +104,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "description",
-                "label" => "描述",
+                "label" => "Description",
                 "field_type" => "Textarea",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -114,7 +114,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => false
             ], [
                 "colname" => "profile_image",
-                "label" => "资料图片",
+                "label" => "Profile Image",
                 "field_type" => "Image",
                 "unique" => false,
                 "defaultvalue" => "",
@@ -124,7 +124,7 @@ class CreateOrganizationsTable extends Migration
                 "listing_col" => true
             ], [
                 "colname" => "profile",
-                "label" => "公司资料",
+                "label" => "Company Profile",
                 "field_type" => "File",
                 "unique" => false,
                 "defaultvalue" => "",
