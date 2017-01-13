@@ -101,8 +101,9 @@ class Packaging extends Command
         $this->copyFile($from . "/database/seeds/DatabaseSeeder.php", $to . "/seeds/DatabaseSeeder.php");
         
         // resources
-        $this->line('Exporting resources: assets + views...');
+        $this->line('Exporting resources: assets + lang + views...');
         $this->replaceFolder($from . "/resources/assets", $to . "/resources/assets");
+		$this->replaceFolder($from . "/resources/lang", $to . "/resources/lang");
         $this->replaceFolder($from . "/resources/views", $to . "/resources/views");
         
         // Utilities 
